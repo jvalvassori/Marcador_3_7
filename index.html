@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marcador de Três Sete</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Marcador de Três Sete</h1>
+    
+    <h4 id="man">Digite os pontos</h4>
+    <input type="number" id="novaPontuacao" maxlength="2" placeholder="Time A">
+    <input type="number" id="novaPontuacao1" maxlength="2" placeholder="Time B">
+    <button id="adicionar" onclick="adicionarPontuacao()">Adicionar Pontuação</button>
+    <button id="desfazer" onclick="desfazerPontuacao()">Desfazer</button>
+    <button id="reiniciar" onclick="reiniciarJogo()">Reiniciar Jogo</button>
+
+        <h4 id="timea">Time A</h4>
+        <p id="timesa">Pontos: <span id="pontuacao">0</span></p>
+    
+        <h4 id="timeb">Time B</h4>
+        <p id="timesb">Pontos: <span id="pontuacao1">0</span></p>
+    <table>
+        <thead>
+            <tr id="tab2">
+                <th id="taba">Time A</th>
+                <th id="tabb">Time B</th>
+            </tr>
+        </thead>
+        <tbody id="tabelaPontuacoes">
+        </tbody>
+    </table>
+
+    <script src="javascript/js.js"></script>
+</body>
+</html>

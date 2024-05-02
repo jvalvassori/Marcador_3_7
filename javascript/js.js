@@ -3,12 +3,32 @@ var pontuacao1 = 0;
 var historicoPontuacao = [];
 var historicoPontuacao1 = [];
 
+var dataHoraUltimaAtualizacao;
+
+// Função para verificar se os dados expiraram
+function verificarExpiracao() {
+    if (dataHoraUltimaAtualizacao) {
+        var dataHoraAtual = new Date().getTime();
+        var diferencaHoras = (dataHoraAtual - dataHoraUltimaAtualizacao)  / (1000 * 60 * 60); // Diferença em horas
+        if (diferencaHoras >= 24) {
+            // Limpar os dados do Local Storage
+            localStorage.removeItem('pontuacao');
+            localStorage.removeItem('pontuacao1');
+            localStorage.removeItem('historicoPontuacao');
+            localStorage.removeItem('historicoPontuacao1');
+            localStorage.removeItem('dataHoraUltimaAtualizacao');
+        }
+    }
+}
+
 // Restaurar valores do Local Storage se existirem
 if (localStorage.getItem('pontuacao')) {
     pontuacao = parseInt(localStorage.getItem('pontuacao'));
     pontuacao1 = parseInt(localStorage.getItem('pontuacao1'));
     historicoPontuacao = JSON.parse(localStorage.getItem('historicoPontuacao')) || [];
     historicoPontuacao1 = JSON.parse(localStorage.getItem('historicoPontuacao1')) || [];
+    dataHoraUltimaAtualizacao = parseInt(localStorage.getItem('dataHoraUltimaAtualizacao'));
+    verificarExpiracao();
     atualizarPontuacao();
     
     // Restaurar histórico na tabela
